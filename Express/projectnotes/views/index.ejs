@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="main w-full min-h-screen bg-zinc-900 text-white p-10">
+
+      <!-- USER INPUT FORM -->
+      <div class="user">
+        <form action="/create" method="post" class="flex flex-col w-full gap-5">
+          <input
+            class="border px-5 py-2 outline-none"
+            type="text"
+            placeholder="Enter Your Task"
+            name="title"
+            required
+          />
+          
+          <textarea
+            class="border px-5 py-2 outline-none resize-none"
+            placeholder="Enter Your Task Description"
+            name="taskdesc"
+            required
+          ></textarea>
+
+          <button
+            class="bg-blue-800 w-fit px-5 py-2 rounded-full text-center self-center"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <!-- TASKS LIST -->
+      <div class="tasks flex flex-wrap gap-3 mt-10 w-full">
+        <% if (files.length > 0) { %>
+
+          <% files.forEach(function(val, index) { %>
+            <div class="task1 min-w-70 bg-zinc-700 rounded-xl px-5 py-4">
+              <h1 class="text-xl font-bold mb-2"><%= val %></h1>
+
+              <!-- Corrected link -->
+              <a class="underline text-blue-400" href="/files/<%= val %>">Read more</a>
+
+              <!-- Show each file's corresponding data -->
+              
+            </div>
+          <% }) %>
+
+        <% } else { %>
+          <h3 class="text-gray-400">No Tasks Yet</h3>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
